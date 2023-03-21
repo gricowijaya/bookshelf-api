@@ -1,0 +1,27 @@
+[
+    {
+        "name": "Buku A",
+        "year": 2010,
+        "author": "John Doe",
+        "summary": "Lorem ipsum dolor sit amet",
+        "publisher": "Dicoding Indonesia",
+        "pageCount": 100,
+        "readPage": 25,
+        "reading": false,
+        "insertedAt": "2021-03-04T09:11:44.598Z",
+        "updatedAt": "2021-03-04T09:11:44.598Z"
+    },
+    {
+        "name": "Buku A Revisi",
+        "year": 2011,
+        "author": "Jane Doe",
+        "summary": "Lorem Dolor sit Amet",
+        "publisher": "Dicoding",
+        "pageCount": 200,
+        "readPage": 26,
+        "finished": false,
+        "reading": false,
+        "insertedAt": "2021-03-05T06:14:28.930Z",
+        "updatedAt": "2021-03-05T06:14:30.718Z"
+    }
+]
