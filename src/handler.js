@@ -23,6 +23,16 @@ const addBooks = (request, h) => {
     return response;
   }
 
+  if (readPage > pageCount) {
+    const response = h.response({
+      status: 'fail',
+      // eslint-disable-next-line max-len
+      message: 'Gagal menambahkan buku. readPage tidak boleh lebih besar dari pageCount',
+    });
+    response.code(400);
+    return response;
+  }
+
   const id = nanoid(16);
   const finished = (pageCount === readPage ? true : false);
   const insertedAt = new Date().toISOString();
@@ -68,12 +78,22 @@ const addBooks = (request, h) => {
   return response;
 };
 
-const getAllBooks = () => ({
-  status: 'success',
-  data: {
-    books,
-  },
-});
+const getAllBooks = (request, h) => {
+  const data = [];
+
+  books.forEach((book) => {
+    data.push({id: book.id, name: book.name, publisher: book.publisher});
+  });
+
+  const response = h.response({
+    status: 'success',
+    data: {
+      books: data,
+    },
+  });
+
+  return response;
+};
 
 const getBookById = (request, h) => {
   const {bookId} = request.params;
@@ -114,7 +134,7 @@ const editBookById = (request, h) => {
   if (checkName) {
     const response = h.response({
       status: 'fail',
-      message: 'Gagal menambahkan buku. Mohon isi nama buku',
+      message: 'Gagal memperbarui buku. Mohon isi nama buku',
     });
     response.code(400);
     return response;
